@@ -10,3 +10,4 @@ class Config:
     SECRET_KEY = "jobportal123"
     
     
+    

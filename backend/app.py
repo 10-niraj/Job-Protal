@@ -11,7 +11,7 @@ from routes.job_routes import job_bp
 app = Flask(__name__)
 
 app.config.from_object(Config)
-app.config['SQLALCHEMY_DATABASE_URL']='sqlite:////tmp/jobportal.db'
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:////tmp/jobportal.db'
 
 CORS(app)
 db.init_app(app)

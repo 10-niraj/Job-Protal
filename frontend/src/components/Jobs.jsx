@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const API_URL = "https://demo-job-protal-backend.vercel.app/api/jobs";
+const API_URL = `${import.meta.env.VITE_API_URL}/api/jobs`;
 
 function Jobs() {
   const [jobs, setJobs] = useState([]);

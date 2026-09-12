@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const API_URL = "http://127.0.0.1:5000/api/jobs";
+const API_URL = "https://demo-job-protal-backend.vercel.app/api/jobs";
 
 function Jobs() {
   const [jobs, setJobs] = useState([]);

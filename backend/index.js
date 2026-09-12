@@ -1,19 +1,25 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// MongoDB Connect
-mongoose.connect(process.env.MONGODB_URI)
-.then(()=> console.log("MongoDB Connected"))
-.catch(err => console.log(err));
+let isConnected = false;
+async function connectDB() {
+  if (isConnected) return;
+  try {
+    await mongoose.connect(process.env.MONGODB_URI);
+    isConnected = true;
+    console.log("MongoDB Connected");
+  } catch (e) {
+    console.log("Mongo Error", e.message);
+  }
+}
+connectDB();
 
-// Test Route
-app.get("/", (req,res)=> res.send("Backend Running"));
+app.get("/", (req,res)=> res.send("Backend Running OK"));
 app.get("/api/jobs", (req,res)=> res.json([{id:1, title:"Frontend Dev", company:"Google"}]));
 app.get("/api/users", (req,res)=> res.json([{id:1, name:"Vivek"}]));
 
